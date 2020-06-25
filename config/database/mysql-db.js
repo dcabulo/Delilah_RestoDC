@@ -11,3 +11,4 @@ const mySqlSequelize = new Sequelize(
         dialect: MysqlConfig.Dialect,
     }
 )
+
