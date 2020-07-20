@@ -5,7 +5,8 @@
   "main": "config/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev":"nodemon config/server.js"
+    "dev":"nodemon config/server.js",
+    "seedDb":"node config/database/seed.js"
   },
   "author": "Diego Cabulo",
   "license": "ISC",

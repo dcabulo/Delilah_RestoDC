@@ -1,5 +1,12 @@
 const { MysqlConfig } = require("../../environments/development").config;
 
+const queryCheckDb=async()=>{
+    return `SELECT SCHEMA.NAME
+    FROM INFORMATION_SCHEMA.SCHEMATA
+    WHERE SCHEMA_NAME='${MysqlConfig.Db}';`
+}
+
+
 
 const querySetDb = () => {
     return `CREATE SCHEMA IF NOT EXISTS ${MysqlConfig.Db};
@@ -60,6 +67,7 @@ const queryForeignKey = (name, aliasFK, foreingkey, reference) => {
 }
 
 module.exports = {
+    queryCheckDb,
     querySetDb,
     queryCreateUserTable,
     queryCreateProductTable,
