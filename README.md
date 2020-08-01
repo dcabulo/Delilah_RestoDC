@@ -13,16 +13,16 @@ DOCUMENTATION URL=> https://documenter.getpostman.com/view/11191728/T1Dv8ucJ
 
 **SETUP INSTRUCTION**
 
-* Clone github repository=> https://github.com/dcabulo/Delilah_RestoDC.git
+* Clone github repository=> ***https://github.com/dcabulo/Delilah_RestoDC.git***
 
-* Install npm dependencies=> npm install in the console
+* Install npm dependencies=> ***npm install in the console***
 
 * optional set a new Database conection in this route .config/enviroments/development.js
 
 * Setup database creating tables, keys and population with a few data=> npm run seedDb
   Or go to workbench and add the data
 
-* initialize server=> npm run dev
+* initialize server=> ***npm run dev***
 
 * Start calling the API use the documentation above in overview
 
