@@ -3,13 +3,13 @@ const { config } = require("../../config/environments/development")
 
 const { QueryTypes } = require("sequelize")
 const { mySqlSequelize } = require("../../config/database/mysql-db")
-const { userQuerys } = require("../../config/database/queries/userTable")
+const { queryUsers } = require("../../config/database/queries/userTable")
 
 
 
 const getUsers = async (req, res) => {
     try {
-        const result = await mySqlSequelize.query(userQuerys.listUsers, {
+        const result = await mySqlSequelize.query(queryUsers.listUsers, {
             type: QueryTypes.SELECT,
         })
         return res
@@ -31,7 +31,7 @@ const createUser = async (req, res) => {
     } = req.body
 
     try {
-        await mySqlSequelize.query(userQuerys.createUsers, {
+        await mySqlSequelize.query(queryUsers.createUsers, {
             replacements: {
                 name: name,
                 username: username,
@@ -45,25 +45,27 @@ const createUser = async (req, res) => {
         })
         return res.status(200).json({ message: "New user created succesfully" });
     } catch (err) {
-        return res.status(401).json({ message: err })
+        return res.status(401).json({ message: "somethin happen sy" })
     }
 }
 
 const logUser = async (req, res) => {
     const { username, password } = req.body
+    console.log(req.body);
     try {
-        const data = await mySqlSequelize.query(userQuerys.login, {
+        const data = await mySqlSequelize.query(queryUsers.login, {
             replacements: {
                 username: username,
             },
             type: QueryTypes.SELECT,
         })
+        console.log(data);
         if (password !== data[0].password) {
             res.status(401).json({ message: "invalid user or password try again" })
         }
 
         const user_rol = data[0].rol
-        const user_id = data[0].user_id
+        const user_id = data[0].id
 
         const payload = { user_id, username, password, user_rol }
         const jwtToken = jwt.sign(payload, config.JwtSecretKey, {
@@ -71,7 +73,8 @@ const logUser = async (req, res) => {
         })
         return res.status(200).json({ token: jwtToken })
     } catch (err) {
-        return res.status(401).json({ message: err })
+        console.log(err);
+        return res.status(401).json({ message: "something go wrong" })
     }
 
 

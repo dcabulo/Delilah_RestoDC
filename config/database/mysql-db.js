@@ -1,5 +1,4 @@
-const ENV = process.env.NODE_ENV || "development.js";
-const { MysqlConfig } = require("../environments/" + ENV).config;
+const { MysqlConfig } = require("../environments/development").config;
 const { Sequelize } = require("sequelize");
 
 const mySqlSequelize = new Sequelize(
@@ -8,6 +7,7 @@ const mySqlSequelize = new Sequelize(
     MysqlConfig.Password, {
     host: MysqlConfig.Host,
     dialect: MysqlConfig.Dialect,
+    Port:3306,
 }
 );
 

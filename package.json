@@ -5,8 +5,8 @@
   "main": "config/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev":"nodemon config/server.js",
-    "seedDb":"node config/database/seed.js"
+    "dev": "nodemon ./config/server.js",
+    "seedDb": "node ./config/database/seed.js"
   },
   "author": "Diego Cabulo",
   "license": "ISC",
@@ -15,7 +15,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.1.0",
-    "sequelize": "^5.21.13"
+    "sequelize": "^5.22.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

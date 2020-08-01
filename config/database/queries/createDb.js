@@ -44,6 +44,7 @@ const queryCreateOrdersTable = () => {
     return `CREATE TABLE IF NOT EXISTS orders(
         id INT PRIMARY KEY AUTO_INCREMENT,
         id_user INT NOT NULL,
+        description VARCHAR(120) NOT NULL,
         price INT NOT NULL, 
         payment_method ENUM('cash','card') NOT NULL,
         status ENUM('new','confirmed','cooking','finish','delievered') DEFAULT 'new' NOT NULL,
